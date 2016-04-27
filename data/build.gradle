@@ -16,7 +16,7 @@
 
 buildscript {
   repositories {
-    mavenCentral()
+    jcenter()
   }
   dependencies {
     classpath 'me.tatarka:gradle-retrolambda:3.2.4'
@@ -52,6 +52,7 @@ android {
     exclude 'META-INF/ASL2.0'
     exclude 'META-INF/NOTICE'
     exclude 'META-INF/LICENSE'
+    exclude 'META-INF/services/javax.annotation.processing.Processor'
   }
 
   lintOptions {
@@ -81,9 +82,7 @@ dependencies {
   compile dataDependencies.gson
   compile dataDependencies.timber
 
-  apt dataDependencies.immutables
-  provided dataDependencies.immutables
-  provided dataDependencies.immutablesGson
+  provided dataDependencies.autoValueGson
 
   debugCompile dataDependencies.stetho
   debugCompile dataDependencies.stethoInterceptor

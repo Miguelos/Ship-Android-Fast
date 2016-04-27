@@ -30,11 +30,12 @@ ext {
   retrofitVersion = '2.0.0-beta4'
   httpLogInterceptorVersion = '3.2.0'
   gsonVersion = '2.5'
-  autoParcelVersion = '0.3.1'
+  autoValueVersion = '1.2'
+  autoValueParcelVersion = '0.2.1'
+  autoValueGson = '0.2.5'
   icepickVersion = '3.1.0'
   playServicesVersion = '8.4.0'
   okhttpGlideIntegrationVersion = '1.4.0@aar'
-  immutablesVersion = '2.1.11'
 
   //Testing
   robolectricVersion = '3.0'
@@ -62,8 +63,7 @@ ext {
       leakcanaryDebug   : "com.squareup.leakcanary:leakcanary-android:${leakcanaryVersion}",
       leakcanaryRelease : "com.squareup.leakcanary:leakcanary-android-no-op:${leakcanaryVersion}",
       glide             : "com.github.bumptech.glide:glide:${glideVersion}",
-      autoParcel        : "com.github.frankiesardo:auto-parcel:${autoParcelVersion}",
-      autoParcelProc    : "com.github.frankiesardo:auto-parcel-processor:${autoParcelVersion}",
+      autoValueParcel   : "com.ryanharter.auto.value:auto-value-parcel:${autoValueParcelVersion}",
       icepick           : "frankiesardo:icepick:${icepickVersion}",
       icepickProc       : "frankiesardo:icepick-processor:${icepickVersion}",
       analyticsServices : "com.google.android.gms:play-services-analytics:${playServicesVersion}",
@@ -88,7 +88,7 @@ ext {
       dagger         : "com.google.dagger:dagger:${daggerVersion}",
       rxJava         : "io.reactivex:rxjava:${rxJavaVersion}",
       javaxAnnotation: "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
-      immutables     : "org.immutables:value:${immutablesVersion}",
+      autoValue         : "com.google.auto.value:auto-value:${autoValueVersion}",
   ]
 
   domainTestDependencies = [
@@ -110,8 +110,7 @@ ext {
       gsonConverter     : "com.squareup.retrofit2:converter-gson:${retrofitVersion}",
       gson              : "com.google.code.gson:gson:${gsonVersion}",
       timber            : "com.jakewharton.timber:timber:${timberVersion}",
-      immutables        : "org.immutables:value:${immutablesVersion}",
-      immutablesGson    : "org.immutables:gson:${immutablesVersion}:annotations",
+      autoValueGson     : "com.ryanharter.auto.value:auto-value-gson:${autoValueGson}"
   ]
 
   dataTestDependencies = [

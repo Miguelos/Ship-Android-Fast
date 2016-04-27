@@ -16,12 +16,16 @@
 
 package com.example.domain.model;
 
-import org.immutables.value.Value;
+import com.google.auto.value.AutoValue;
 
-@Value.Immutable
-@Value.Style(jdkOnly = true)
+@AutoValue
 public abstract class RepoDomain {
 
   public abstract int getId();
+
   public abstract String getName();
+
+  public static RepoDomain create(int id, String name) {
+    return new AutoValue_RepoDomain(id, name);
+  }
 }

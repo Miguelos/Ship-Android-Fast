@@ -9,7 +9,4 @@ public class Navigator {
   @Inject
   public Navigator() {
   }
-
-
-
 }
