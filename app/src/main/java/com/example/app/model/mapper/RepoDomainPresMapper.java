@@ -33,7 +33,7 @@ public class RepoDomainPresMapper {
   }
 
   public Repository transform(RepoDomain repoDomain) {
-    return Repository.builder().id(repoDomain.getId()).name(repoDomain.getName()).build();
+    return Repository.create(repoDomain.getId(), repoDomain.getName());
   }
 
   public List<Repository> transform(Collection<RepoDomain> repoEntityCollection) {

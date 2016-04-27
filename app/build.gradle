@@ -61,8 +61,7 @@ android {
   signingConfigs {
     release {
       def props = new Properties()
-      props.load(
-          new FileInputStream(rootProject.file("config/buildsystem/release.properties")))
+      props.load(new FileInputStream(rootProject.file("config/buildsystem/release.properties")))
 
       storeFile file(props.keyStore)
       storePassword props.keyStorePassword
@@ -78,6 +77,7 @@ android {
       applicationIdSuffix '.debug'
       buildConfigField "String", "API_URL", type.apiUrl
       minifyEnabled false
+      debuggable true
     }
 
     stage {
@@ -87,7 +87,8 @@ android {
       buildConfigField "String", "API_URL", type.apiUrl
       minifyEnabled true
       debuggable true
-      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro', 'proguard-rules-stage.pro'
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro',
+          'proguard-rules-stage.pro'
       signingConfig signingConfigs.debug
     }
 
@@ -148,8 +149,7 @@ dependencies {
   compile appDependencies.analyticsServices
   compile appDependencies.okhttpGlideInteg
 
-  compile appDependencies.autoParcel
-  apt appDependencies.autoParcelProc
+  provided appDependencies.autoValueParcel
 
   compile appDependencies.icepick
   apt appDependencies.icepickProc

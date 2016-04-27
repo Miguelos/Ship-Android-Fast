@@ -39,8 +39,8 @@ dependencies {
   compile domainDependencies.dagger
   compile domainDependencies.rxJava
 
-  apt domainDependencies.immutables
-  provided domainDependencies.immutables
+  apt domainDependencies.autoValue
+  compileOnly domainDependencies.autoValue
 
   testCompile domainTestDependencies.junit
   testCompile domainTestDependencies.mockito
