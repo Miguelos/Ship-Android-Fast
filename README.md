@@ -17,7 +17,6 @@ Libraries / Patterns
 * [Leak Canary][6]
 * [Activity On Crash][7]
 * [Glide][8]
-* [Autoparcel][9]
 * [Icepick][10]
 * [Play Services Analytics][11]
 * [Mockito][12]
@@ -29,7 +28,9 @@ Libraries / Patterns
 * [Retrofit][18]
 * [Gson][19]
 * [Frodo][20]
-* [Immutables][22]
+* [AutoValue][22]
+* [AutoValue Parcel Extension][23]
+* [AutoValue Gson Extension][24]
 
 
 License
@@ -70,4 +71,6 @@ License
 [19]:https://github.com/google/gson
 [20]:https://github.com/android10/frodo
 [21]:https://github.com/android10/Android-CleanArchitecture
-[22]:http://immutables.github.io/
+[22]:https://github.com/google/auto
+[23]:https://github.com/rharter/auto-value-parcel
+[24]:https://github.com/rharter/auto-value-gson
