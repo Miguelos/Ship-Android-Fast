@@ -1,6 +1,6 @@
 Ship Android Fast
 =================
-[![Hex.pm](https://img.shields.io/hexpm/l/plug.svg)](http://www.apache.org/licenses/LICENSE-2.0)
+[![Build Status](https://travis-ci.org/Miguelos/Ship-Android-Fast.svg?branch=master)](https://travis-ci.org/Miguelos/Ship-Android-Fast) [![Hex.pm](https://img.shields.io/hexpm/l/plug.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 
 This repository has been created to allow me to bootstrap everything I think it's necessary nowadays in an android app.
 

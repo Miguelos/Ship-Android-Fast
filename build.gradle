@@ -1,3 +1,4 @@
+apply from: 'config/buildsystem/ci.gradle'
 apply from: 'config/buildsystem/dependencies.gradle'
 apply from: 'config/buildsystem/flavours.gradle'
 apply from: 'config/buildsystem/types.gradle'
