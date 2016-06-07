@@ -41,3 +41,18 @@ android {
     disable 'OldTargetApi' // Due to Robolectric that modifies the manifest when running tests
   }
 }
+
+dependencies {
+  def commonsDependencies = rootProject.ext.commonsDependencies
+  compile commonsDependencies.timber
+}
+
+task deleteOldJar(type: Delete) {
+  delete 'build/libs/commons.jar'
+}
+
+task makeJar(type: Jar, dependsOn: 'assembleRelease') {
+  from fileTree(dir: 'build/intermediates/classes/release')
+}
+
+makeJar.dependsOn(deleteOldJar)

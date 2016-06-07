@@ -22,7 +22,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.example.app.R;
 import com.example.app.model.Repository;
@@ -64,9 +64,9 @@ public class RepositoryAdapter extends RecyclerView.Adapter<RepositoryAdapter.Re
 
   static class RepoViewHolder extends RecyclerView.ViewHolder {
 
-    @Bind(R.id.tv_id)
+    @BindView(R.id.tv_id)
     TextView tvId;
-    @Bind(R.id.tv_name)
+    @BindView(R.id.tv_name)
     TextView tvName;
 
     public RepoViewHolder(View view) {

@@ -17,11 +17,11 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.neenbedankt.android-apt'
 apply plugin: 'com.fernandocejas.frodo'
-apply plugin: 'com.frogermcs.dagger2metrics'
+apply plugin: 'com.getkeepsafe.dexcount'
 
-
-//apply plugin: 'com.google.gms.google-services'
-//apply plugin: 'io.fabric'
+frodo {
+  enabled = false
+}
 
 android {
 
@@ -143,13 +143,15 @@ dependencies {
   compile appDependencies.timber
   compile appDependencies.activityOnCrash
   compile appDependencies.glide
-  compile appDependencies.butterKnife
   compile appDependencies.rxJava
   compile appDependencies.rxAndroid
   compile appDependencies.analyticsServices
   compile appDependencies.okhttpGlideInteg
 
   provided appDependencies.autoValueParcel
+
+  compile appDependencies.butterKnife
+  apt appDependencies.butterKnifeProc
 
   compile appDependencies.icepick
   apt appDependencies.icepickProc
@@ -186,4 +188,15 @@ dependencies {
     exclude module: 'recyclerview-v7'
     exclude module: 'support-v4'
   }
+}
+
+dexcount {
+  format = "list"
+  includeClasses = false
+  includeFieldCount = true
+  includeTotalMethodCount = false
+  orderByMethodCount = false
+  verbose = false
+  maxTreeDepth = 3
+  teamCityIntegration = false
 }

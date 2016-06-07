@@ -49,7 +49,6 @@ public class AndroidApp extends Application {
       initTimber(new Timber.DebugTree());
       enabledStrictMode();
       initStetho();
-      initDaggerMetrics();
     } else {
 
       initTimber(new CrashReportingTree());
@@ -83,11 +82,6 @@ public class AndroidApp extends Application {
           new StrictMode.ThreadPolicy.Builder().detectAll().penaltyLog().penaltyDeathOnNetwork().build()
       );
     }
-  }
-
-
-  private void initDaggerMetrics() {
-    //Dagger2Metrics.enableCapturing(this);
   }
 
   private void initCrashReports() {

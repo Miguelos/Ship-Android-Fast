@@ -17,6 +17,7 @@
 package com.example.app.view.fragment;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -24,7 +25,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
-import butterknife.Bind;
+import butterknife.BindView;
 import com.example.app.AndroidApp;
 import com.example.app.R;
 import com.example.app.exception.ErrorMessageFactory;
@@ -41,13 +42,13 @@ public class RepositoriesFragment extends BaseFragment implements RepositoriesVi
   @Inject
   RepositoriesPresenter repositoriesPresenter;
 
-  @Bind(R.id.rl_repository_list)
+  @BindView(R.id.rl_repository_list)
   RelativeLayout rlRepositoryList;
-  @Bind(R.id.rv_repo)
+  @BindView(R.id.rv_repo)
   RecyclerView rvRepo;
-  @Bind(R.id.rl_progress)
+  @BindView(R.id.rl_progress)
   RelativeLayout rlProgress;
-  @Bind(R.id.rl_retry)
+  @BindView(R.id.rl_retry)
   RelativeLayout rlRetry;
 
   public static RepositoriesFragment newInstance() {
@@ -75,8 +76,10 @@ public class RepositoriesFragment extends BaseFragment implements RepositoriesVi
   ) {
     super.onViewCreated(view, savedInstanceState);
     setupRecyclerView(rvRepo);
-    repositoriesPresenter.attachView(this);
-    repositoriesPresenter.initialize();
+    if (repositoriesPresenter != null) {
+      repositoriesPresenter.attachView(this);
+      repositoriesPresenter.initialize();
+    }
   }
 
   @Override
@@ -88,22 +91,30 @@ public class RepositoriesFragment extends BaseFragment implements RepositoriesVi
 
   @Override
   public void showLoading() {
-    rlProgress.setVisibility(View.VISIBLE);
+    if (rlProgress != null) {
+      rlProgress.setVisibility(View.VISIBLE);
+    }
   }
 
   @Override
   public void hideLoading() {
-    rlProgress.setVisibility(View.GONE);
+    if (rlProgress != null) {
+      rlProgress.setVisibility(View.GONE);
+    }
   }
 
   @Override
   public void showRetry() {
-    rlRetry.setVisibility(View.VISIBLE);
+    if (rlRetry != null) {
+      rlRetry.setVisibility(View.VISIBLE);
+    }
   }
 
   @Override
   public void hideRetry() {
-    rlRetry.setVisibility(View.GONE);
+    if (rlRetry != null) {
+      rlRetry.setVisibility(View.GONE);
+    }
   }
 
   @Override
@@ -115,7 +126,7 @@ public class RepositoriesFragment extends BaseFragment implements RepositoriesVi
     }
   }
 
-  private void setupRecyclerView(RecyclerView recyclerView) {
+  private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
     RepositoryAdapter adapter = new RepositoryAdapter(getContext());
     recyclerView.setAdapter(adapter);
     recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));

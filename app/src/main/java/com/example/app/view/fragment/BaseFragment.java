@@ -23,11 +23,14 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.view.View;
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 /**
  * Base {@link android.support.v4.app.Fragment} class for every Fragment in this application.
  */
 public abstract class BaseFragment extends Fragment {
+
+  private Unbinder unbinder;
 
   @Override
   public void onCreate(Bundle savedInstanceState) {
@@ -42,19 +45,23 @@ public abstract class BaseFragment extends Fragment {
       Bundle savedInstanceState
   ) {
     super.onViewCreated(view, savedInstanceState);
-    ButterKnife.bind(this, view);
+    unbinder = ButterKnife.bind(this, view);
   }
 
   @Override
   public void onDestroyView() {
+    if (unbinder != null) {
+      unbinder.unbind();
+      unbinder = null;
+    }
     super.onDestroyView();
-    ButterKnife.unbind(this);
   }
 
   /**
    * Shows a {@link android.support.design.widget.Snackbar} message.
    *
-   * @param message An string representing a message to be shown.
+   * @param view A view to attach the snackbar.
+   * @param message A string representing a message to be shown.
    */
   protected void showSnackbarMessage(View view, String message) {
     Snackbar.make(view, message, Snackbar.LENGTH_LONG).show();
@@ -63,11 +70,36 @@ public abstract class BaseFragment extends Fragment {
   /**
    * Shows a {@link android.support.design.widget.Snackbar} message.
    *
-   * @param message An string representing a message to be shown.
+   * @param message A string representing a message to be shown.
    */
   protected void showSnackbarMessage(String message) {
     if (getView() != null) {
       Snackbar.make(getView(), message, Snackbar.LENGTH_LONG).show();
+    }
+  }
+
+  /**
+   * Shows a {@link android.support.design.widget.Snackbar} message.
+   *
+   * @param view A view to attach the snackbar.
+   * @param message A string representing a message to be shown.
+   * @param duration The duration that the snackbar will be shown
+   */
+  protected void showSnackbarMessage(View view, String message, int duration) {
+    if (view != null) {
+      Snackbar.make(view, message, duration).show();
+    }
+  }
+
+  /**
+   * Shows a {@link android.support.design.widget.Snackbar} message.
+   *
+   * @param message A string representing a message to be shown.
+   * @param duration The duration that the snackbar will be shown
+   */
+  protected void showSnackbarMessage(String message, int duration) {
+    if (getView() != null) {
+      Snackbar.make(getView(), message, duration).show();
     }
   }
 

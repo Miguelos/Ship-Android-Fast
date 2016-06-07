@@ -19,7 +19,7 @@ buildscript {
     jcenter()
   }
   dependencies {
-    classpath 'me.tatarka:gradle-retrolambda:3.2.4'
+    classpath 'me.tatarka:gradle-retrolambda:3.2.5'
   }
 }
 
@@ -29,9 +29,6 @@ apply plugin: 'me.tatarka.retrolambda'
 apply plugin: 'com.fernandocejas.frodo'
 
 android {
-
-  // Remove on release
-  // defaultPublishConfig "debug"
 
   compileSdkVersion rootProject.ext.androidCompileSdkVersion
   buildToolsVersion rootProject.ext.androidBuildToolsVersion
@@ -92,6 +89,8 @@ dependencies {
   testCompile testDependencies.assertj
   testCompile testDependencies.mockito
   testCompile testDependencies.robolectric
+  testCompile testDependencies.mockwebserver
+  testCompile testDependencies.commonsIO
 }
 
 tasks.matching {it instanceof Test}.all {

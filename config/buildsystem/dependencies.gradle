@@ -10,31 +10,31 @@ ext {
   versionPatch = 0
   versionBuild = 0
 
-  androidBuildToolsVersion = "23.0.2"
+  androidBuildToolsVersion = "23.0.3"
   androidMinSdkVersion = 15
   androidTargetSdkVersion = 23
   androidCompileSdkVersion = 23
 
   //Libraries
-  supportVersion = '23.2.0'
+  supportVersion = '23.2.1'
   javaxAnnotationVersion = '1.0'
   daggerVersion = '2.0.2'
-  butterKnifeVersion = '7.0.1'
-  rxJavaVersion = '1.1.1'
-  rxAndroidVersion = '1.1.0'
+  butterKnifeVersion = '8.0.1'
+  rxJavaVersion = '1.1.4'
+  rxAndroidVersion = '1.2.0'
   timberVersion = '4.1.1'
-  leakcanaryVersion = '1.3.1'
+  leakcanaryVersion = '1.4-beta2'
   glideVersion = '3.7.0'
-  customactivityoncrashVersion = '1.4.0'
+  customactivityoncrashVersion = '1.5.0'
   stethoVersion = '1.3.1'
-  retrofitVersion = '2.0.0-beta4'
+  retrofitVersion = '2.0.2'
   httpLogInterceptorVersion = '3.2.0'
-  gsonVersion = '2.5'
+  gsonVersion = '2.6.2'
   autoValueVersion = '1.2'
-  autoValueParcelVersion = '0.2.1'
-  autoValueGson = '0.2.5'
-  icepickVersion = '3.1.0'
-  playServicesVersion = '8.4.0'
+  autoValueParcelVersion = '0.2.2'
+  autoValueGson = '0.3.1'
+  icepickVersion = '3.2.0'
+  playServicesVersion = '9.0.2'
   okhttpGlideIntegrationVersion = '1.4.0@aar'
 
   //Testing
@@ -45,6 +45,8 @@ ext {
   dexmakerVersion = '1.0'
   espressoVersion = '2.2.1'
   testRulesVersion = '0.4.1'
+  mockwebserverVersion  = '3.2.0'
+  commonsIOVersion  = '2.5'
 
   appDependencies = [
       support           : "com.android.support:support-v4:${supportVersion}",
@@ -56,6 +58,7 @@ ext {
       daggerCompiler    : "com.google.dagger:dagger-compiler:${daggerVersion}",
       dagger            : "com.google.dagger:dagger:${daggerVersion}",
       butterKnife       : "com.jakewharton:butterknife:${butterKnifeVersion}",
+      butterKnifeProc   : "com.jakewharton:butterknife-compiler:${butterKnifeVersion}",
       rxJava            : "io.reactivex:rxjava:${rxJavaVersion}",
       rxAndroid         : "io.reactivex:rxandroid:${rxAndroidVersion}",
       timber            : "com.jakewharton.timber:timber:${timberVersion}",
@@ -71,29 +74,33 @@ ext {
   ]
 
   appTestDependencies = [
-      mockito        : "org.mockito:mockito-core:${mockitoVersion}",
-      dexmaker       : "com.google.dexmaker:dexmaker:${dexmakerVersion}",
-      dexmakerMockito: "com.google.dexmaker:dexmaker-mockito:${dexmakerVersion}",
-      espresso       : "com.android.support.test.espresso:espresso-core:${espressoVersion}",
-      espressoContrib: "com.android.support.test.espresso:espresso-contrib:${espressoVersion}",
-      rules          : "com.android.support.test:rules:${testRulesVersion}",
-      runner         : "com.android.support.test:runner:${testRulesVersion}",
-      junit          : "junit:junit:${jUnitVersion}",
-      assertj        : "org.assertj:assertj-core:${assertJVersion}",
-      robolectric    : "org.robolectric:robolectric:${robolectricVersion}",
+      mockito           : "org.mockito:mockito-core:${mockitoVersion}",
+      dexmaker          : "com.google.dexmaker:dexmaker:${dexmakerVersion}",
+      dexmakerMockito   : "com.google.dexmaker:dexmaker-mockito:${dexmakerVersion}",
+      espresso          : "com.android.support.test.espresso:espresso-core:${espressoVersion}",
+      espressoContrib   : "com.android.support.test.espresso:espresso-contrib:${espressoVersion}",
+      rules             : "com.android.support.test:rules:${testRulesVersion}",
+      runner            : "com.android.support.test:runner:${testRulesVersion}",
+      junit             : "junit:junit:${jUnitVersion}",
+      assertj           : "org.assertj:assertj-core:${assertJVersion}",
+      robolectric       : "org.robolectric:robolectric:${robolectricVersion}",
+  ]
+
+  commonsDependencies = [
+      timber            : "com.jakewharton.timber:timber:${timberVersion}",
   ]
 
   domainDependencies = [
-      daggerCompiler : "com.google.dagger:dagger-compiler:${daggerVersion}",
-      dagger         : "com.google.dagger:dagger:${daggerVersion}",
-      rxJava         : "io.reactivex:rxjava:${rxJavaVersion}",
-      javaxAnnotation: "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
+      daggerCompiler    : "com.google.dagger:dagger-compiler:${daggerVersion}",
+      dagger            : "com.google.dagger:dagger:${daggerVersion}",
+      rxJava            : "io.reactivex:rxjava:${rxJavaVersion}",
+      javaxAnnotation   : "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
       autoValue         : "com.google.auto.value:auto-value:${autoValueVersion}",
   ]
 
   domainTestDependencies = [
-      junit  : "junit:junit:${jUnitVersion}",
-      mockito: "org.mockito:mockito-core:${mockitoVersion}",
+      junit             : "junit:junit:${jUnitVersion}",
+      mockito           : "org.mockito:mockito-core:${mockitoVersion}",
   ]
 
   dataDependencies = [
@@ -114,9 +121,11 @@ ext {
   ]
 
   dataTestDependencies = [
-      junit      : "junit:junit:${jUnitVersion}",
-      assertj    : "org.assertj:assertj-core:${assertJVersion}",
-      mockito    : "org.mockito:mockito-core:${mockitoVersion}",
-      robolectric: "org.robolectric:robolectric:${robolectricVersion}",
+      junit             : "junit:junit:${jUnitVersion}",
+      assertj           : "org.assertj:assertj-core:${assertJVersion}",
+      mockito           : "org.mockito:mockito-core:${mockitoVersion}",
+      robolectric       : "org.robolectric:robolectric:${robolectricVersion}",
+      mockwebserver     : "com.squareup.okhttp3:mockwebserver:${mockwebserverVersion}",
+      commonsIO         : "commons-io:commons-io:${commonsIOVersion}"
   ]
 }
