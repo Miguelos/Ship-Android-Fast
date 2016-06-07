@@ -20,6 +20,7 @@ buildscript {
     classpath 'net.ltgt.gradle:gradle-apt-plugin:0.6'
     classpath 'com.google.gms:google-services:3.0.0'
     classpath 'com.getkeepsafe.dexcount:dexcount-gradle-plugin:0.5.2'
+    classpath 'com.github.triplet.gradle:play-publisher:1.1.4'
   }
 }
 
@@ -75,8 +76,4 @@ task increaseVersion << {
       versionPatch +
       "." +
       versionBuild)
-}
-
-task buildscriptDependencies << {
-  buildscript.configurations.classpath.each { println it }
 }
